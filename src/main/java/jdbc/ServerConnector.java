@@ -1,59 +1,22 @@
 package jdbc;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
 
 /**
- * класс для установления соединения с БД MySQL
- *
- * @author Слижова Олеся
+ * @author Скороход Олеся
  */
 public class ServerConnector {
 
     private static ServerConnector instance;
-    private static Connection connection;
+    private Connection connection;
 
-    /**
-     * метод для соединения с БД по параметрам, читаемые из файла connection.properties
-     */
-    private ServerConnector() {
-
-        PropertyReader propertyReader = new PropertyReader();
-        Properties properties = propertyReader.getProperties("connection.properties");
-
-        Connection conn = null;
-
-        try {
-            Class.forName(properties.getProperty("driver"));
-
-            try {
-                conn = DriverManager.getConnection(
-                        properties.getProperty("url"),
-                        properties.getProperty("username"),
-                        properties.getProperty("password")
-                );
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        connection = conn;
+    private ServerConnector(Connection connection) {
+        this.connection = connection;
     }
 
-    /**
-     * статический метод, возвращает единственный экземпляр класса, проверяя перед этим не создан ли он
-     * (создание объекта при первом вызове метода)
-     *
-     * @return instance
-     */
-    public static ServerConnector getInstance() {
-        if (instance == null) {
-            instance = new ServerConnector();
+    public static ServerConnector getInstance(Connection connection) {
+        if (connection != null) {
+            instance = new ServerConnector(connection);
         }
         return instance;
     }

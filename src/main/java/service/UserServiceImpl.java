@@ -11,12 +11,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao = new UserDaoImpl();
 
     @Override
-    public List<User> getAll() {
+    public List<User> findAll() {
         return userDao.findAll();
-    }
-
-    @Override
-    public List<User> getBalanceById() {
-        return userDao.findBalanceById();
     }
 }
