@@ -2,7 +2,7 @@ package controller;
 
 import entity.User;
 import service.UserService;
-import service.UserServiceImpl;
+import service.impl.UserServiceImpl;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

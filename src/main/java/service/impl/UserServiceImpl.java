@@ -1,8 +1,9 @@
-package service;
+package service.impl;
 
 import dao.UserDao;
 import dao.UserDaoImpl;
 import entity.User;
+import service.UserService;
 
 import java.util.List;
 
