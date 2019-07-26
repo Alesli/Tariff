@@ -16,24 +16,24 @@ public class UserServlet {
 
     private UserService userService = new UserServiceImpl();
 
-//    http://localhost:8080/api/user/findAll
+//    http://localhost:8080/api/user/json/findAll
 
     @GET
-    @Path("/findAll")
+    @Path("/json/findAll")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
-        List<User> result = userService.getAll();
+        List<User> result = userService.findAll();
         return result != null ?
                 Response.ok().entity(result).build() :
                 Response.noContent().build();
     }
 
-    //    http://localhost:8080/api/user/balance
+    //     http://localhost:8080/api/user/xml/findAll
     @GET
-    @Path("/balance")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/xml/findAll")
+    @Produces(MediaType.APPLICATION_XML)
     public Response findBalanceById() {
-        List<User> result = userService.getBalanceById();
+        List<User> result = userService.findAll();
         return result != null ?
                 Response.ok().entity(result).build() :
                 Response.noContent().build();
