@@ -11,5 +11,6 @@ public class Client {
 
     private long id;
     private String name;
-    private String lastName;
+    private String tariff;
+    private Double balance;
 }

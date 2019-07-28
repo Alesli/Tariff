@@ -4,7 +4,7 @@ import com.wwhale.tariff.entity.Client;
 
 import java.util.List;
 
-public interface UserDao {
+public interface ClientDao {
 
     List<Client> findAll();
 }

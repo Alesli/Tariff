@@ -11,15 +11,15 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("/api")
+@Path("/")
 public class ClientServlet {
 
     private ClientService clientService = new ClientServiceImpl();
 
-//    http://localhost:8080/api/xml/client/findAll
+//    http://localhost:8080/api/json/clients/findAll
 
     @GET
-    @Path("/xml/clients/findAll")
+    @Path("/json/clients/findAll")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
         List<Client> result = clientService.findAll();
@@ -28,9 +28,9 @@ public class ClientServlet {
                 Response.noContent().build();
     }
 
-    //     http://localhost:8080/api/json/client/findAll
+    //     http://localhost:8080/xml/clients/findAll
     @GET
-    @Path("/json/clients/findAll")
+    @Path("/xml/clients/findAll")
     @Produces(MediaType.APPLICATION_XML)
     public Response findBalanceById() {
         List<Client> result = clientService.findAll();
