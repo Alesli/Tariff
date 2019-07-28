@@ -1,8 +1,8 @@
-package controller;
+package com.wwhale.tariff.controller;
 
-import entity.User;
-import service.UserService;
-import service.impl.UserServiceImpl;
+import com.wwhale.tariff.entity.Client;
+import com.wwhale.tariff.service.ClientService;
+import com.wwhale.tariff.service.impl.ClientServiceImpl;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,29 +11,29 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("/user")
-public class UserServlet {
+@Path("/api")
+public class ClientServlet {
 
-    private UserService userService = new UserServiceImpl();
+    private ClientService clientService = new ClientServiceImpl();
 
-//    http://localhost:8080/api/user/json/findAll
+//    http://localhost:8080/api/xml/client/findAll
 
     @GET
-    @Path("/json/findAll")
+    @Path("/xml/clients/findAll")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
-        List<User> result = userService.findAll();
+        List<Client> result = clientService.findAll();
         return result != null ?
                 Response.ok().entity(result).build() :
                 Response.noContent().build();
     }
 
-    //     http://localhost:8080/api/user/xml/findAll
+    //     http://localhost:8080/api/json/client/findAll
     @GET
-    @Path("/xml/findAll")
+    @Path("/json/clients/findAll")
     @Produces(MediaType.APPLICATION_XML)
     public Response findBalanceById() {
-        List<User> result = userService.findAll();
+        List<Client> result = clientService.findAll();
         return result != null ?
                 Response.ok().entity(result).build() :
                 Response.noContent().build();

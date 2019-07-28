@@ -1,4 +1,4 @@
-package util;
+package com.wwhale.tariff.util;
 
 import java.io.IOException;
 import java.util.Properties;

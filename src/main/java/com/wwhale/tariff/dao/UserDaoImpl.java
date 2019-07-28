@@ -1,9 +1,8 @@
-package dao;
+package com.wwhale.tariff.dao;
 
-import entity.Tariff;
-import entity.User;
-import jdbc.ServerConnector;
-import jdbc.ServerQuery;
+import com.wwhale.tariff.entity.Client;
+import com.wwhale.tariff.jdbc.ServerConnector;
+import com.wwhale.tariff.jdbc.ServerQuery;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,32 +29,32 @@ public class UserDaoImpl implements UserDao {
      * @return результат запроса getAllUser из файла mysql_queries.properties
      */
     @Override
-    public List<User> findAll() {
+    public List<Client> findAll() {
 
-        List<User> userList = new ArrayList<>();
+        List<Client> clientList = new ArrayList<>();
         try {
             String query = queries.get("getAllUsers");
             PreparedStatement userPreparedStatement = connection.prepareStatement(query);
             ResultSet userResultSet = userPreparedStatement.executeQuery();
             while (userResultSet.next()) {
-                User user = getUser(userResultSet);
+                Client client = getUser(userResultSet);
                 query = queries.get("getAllTariffsByUserId");
                 PreparedStatement tariffPreparedStatement = connection.prepareStatement(query);
-                tariffPreparedStatement.setLong(1, user.getId());
+                tariffPreparedStatement.setLong(1, client.getId());
                 ResultSet tariffResultSet = tariffPreparedStatement.executeQuery();
                 List<Tariff> tariffList = getTariff(tariffResultSet);
-                user.setTariffList(tariffList);
-                userList.add(user);
+                client.setTariffList(tariffList);
+                clientList.add(client);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return userList;
+        return clientList;
     }
 
-    private User getUser(ResultSet resultSet) {
+    private Client getUser(ResultSet resultSet) {
         try {
-            return User
+            return Client
                     .builder()
                     .id(resultSet.getLong(1))
                     .name(resultSet.getString(2))

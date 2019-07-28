@@ -33,9 +33,9 @@ COLLATE utf8_general_ci;
 USE tariff;
 
 --
--- Создать таблицу `user`
+-- Создать таблицу `client`
 --
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS client (
   id bigint(20) NOT NULL AUTO_INCREMENT,
   name varchar(50) NOT NULL,
   last_name varchar(50) NOT NULL,
@@ -68,12 +68,12 @@ COMMENT = 'содержит все тарифы для каждого польз
 --
 ALTER TABLE tariff
 ADD CONSTRAINT FK_tariff_to_user_id FOREIGN KEY (user_id)
-REFERENCES user (id);
+REFERENCES client (id);
 
 -- 
--- Вывод данных для таблицы user
+-- Вывод данных для таблицы client
 --
-INSERT INTO user VALUES
+INSERT INTO client VALUES
 (1, 'Иван', 'Николаев'),
 (2, 'Рита', 'Сергеенко'),
 (3, 'Олег', 'Романович'),
