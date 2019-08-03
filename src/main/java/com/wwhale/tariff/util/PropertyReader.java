@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * класс, для чтения данных из файла connection.properties при подключении к БД
+ * Class for reading data from a connection.property file when connecting to a database
  *
- * @author Слижова Олеся
+ * @author Alesia Skarakhod
  */
 public class PropertyReader {
 

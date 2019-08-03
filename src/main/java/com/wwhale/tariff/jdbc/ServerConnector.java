@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * класс для установления соединения с БД MySQL
+ * Class for establishing a connection with MySQL database
  *
- * @author Слижова Олеся
+ * @author Alesia Skarakhod
  */
 public class ServerConnector {
 
@@ -18,7 +18,8 @@ public class ServerConnector {
     private static Connection connection;
 
     /**
-     * метод для соединения с БД по параметрам, читаемые из файла connection.properties
+     * The method for connecting to the MySQL server by property
+     * readable from the connection.property file
      */
     private ServerConnector() {
 
@@ -48,8 +49,9 @@ public class ServerConnector {
     }
 
     /**
-     * статический метод, возвращает единственный экземпляр класса, проверяя перед этим не создан ли он
-     * (создание объекта при первом вызове метода)
+     * The static method, returns a single instance of the class,
+     * checking whether it was not created before
+     * (object creation at the first method call)
      *
      * @return instance
      */
@@ -60,6 +62,9 @@ public class ServerConnector {
         return instance;
     }
 
+    /**
+     * The method for  getting connection
+     */
     public Connection getConnection() {
         return connection;
     }

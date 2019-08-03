@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * класс для установления соединения с БД MySQL
+ * The class for establishing a connection with MySQL database
  *
- * @author Слижова Олеся
+ * @author Alesia Skarakhod
  */
 public class ServerQuery {
 
@@ -17,7 +17,8 @@ public class ServerQuery {
     private static Map<String, String> queries;
 
     /**
-     * метод для подключения к серверу MySQL по свойствам читаемым из файла connection.properties
+     * The method for connecting to the MySQL server by property
+     * readable from the connection.property file
      */
     private ServerQuery() {
 
@@ -38,7 +39,8 @@ public class ServerQuery {
     }
 
     /**
-     * статический метод, возвращает единственный экземпляр класса, проверяя перед этим не создан ли он
+     * The static method, returns a single instance of the class,
+     * checking whether it was not created before
      *
      * @return instance
      */
@@ -50,9 +52,10 @@ public class ServerQuery {
     }
 
     /**
-     * метод получет запрос к серверу MySQL из файла mysql_queries.properties по ключу
+     * the method will receive a request to the MySQL server
+     * from the mysql_queries.property file by key
      *
-     * @param key String, название запроса
+     * @param key String, request name
      * @return queries.get(key)
      */
     public String getQuery(String key) {
